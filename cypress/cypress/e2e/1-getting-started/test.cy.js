@@ -58,18 +58,30 @@
 // })
 // })
  //test case 4
+//  describe(" automate https://webdriveruniversity.com/ page",() => {
+// it ("must successfully enter the contact us section",() => {
+//   cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html")
+//   cy.get('.section_header').should("exist");
+//   cy.get('[name="first_name"]').type("test1a");
+//   cy.get('[name="last_name"]').type("test2a");
+//   cy.get('[name="email"]').type("asa@mail.ru");
+//   cy.get('textarea.feedback-input').type("test for QA Asya1");
+//   cy.get('[type="submit"]').click()
+//   cy.get('h1').should('have.text','Thank You for your Message!')
+// })
+//  })
+
+ //test case 5
  describe(" automate https://webdriveruniversity.com/ page",() => {
-it ("must successfully enter the contact us section",() => {
+it ("should not successfully enter the contact us section with an incorrect email format",() => {
   cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html")
   cy.get('.section_header').should("exist");
   cy.get('[name="first_name"]').type("test1");
   cy.get('[name="last_name"]').type("test2");
-  cy.get('[name="email"]').type("as@mail.ru");
-  cy.get('textarea.feedback-input').type("test for QA Asya");
+  cy.get('[name="email"]').type("as@mail.");
+  cy.get('textarea.feedback-input').type("test for QA ");
   cy.get('[type="submit"]').click()
-  cy.get('h1').should('have.text','Thank You for your Message!')
+  cy.get('body').should('have.text','\n\n\n Error: Invalid email address\n\n\n')
+  
 })
  })
-
-
-
